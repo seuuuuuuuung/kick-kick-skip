@@ -1,0 +1,201 @@
+/* Mobile layout (max-width: 767px).
+   PC keeps the original 1920px Figma stage (.stage) untouched; on phones the .m blocks take over.
+   Detail pages keep one horizontal/vertical slice of the PC stage (.stage.m-window) scaled to the
+   phone width, sized by --mx/--my/--mh on .stage and --zm set from <html data-mw> in the head script. */
+.m { display: none; }
+
+@media (max-width: 767px) {
+  body { margin: 0; background: #fff; }
+  .stage:not(.m-window) { display: none; }
+
+  .stage.m-window { height: calc(var(--mh) * var(--zm) * 1px); }
+  .stage.m-window .page {
+    transform: translate(calc(var(--mx) * var(--zm) * -1px), calc(var(--my) * var(--zm) * -1px)) scale(var(--zm));
+  }
+
+  .m {
+    display: block;
+    color: #000;
+    font-family: "Asta Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    -webkit-text-size-adjust: 100%;
+  }
+  .m *, .m *::before, .m *::after { box-sizing: border-box; }
+  .m img { display: block; max-width: 100%; height: auto; }
+  .m a { color: inherit; }
+  .m :where(p, h1, h2, h3, ul, dl, dd, figure) { margin: 0; }
+
+  /* type */
+  .m-salted { font-family: Salted, "Patrick Hand SC", "Asta Sans", cursive; font-weight: 400; }
+  .m-gothic { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; }
+  .m-lefty { font-family: Lefty, "Asta Sans", cursive; }
+  .m-uhbee { font-family: "UhBee Kang-Ja", "Asta Sans", cursive; }
+  .m b, .m strong { font-weight: 700; }
+
+  /* header */
+  .m-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 20px 10px;
+    font-family: Salted, "Patrick Hand SC", "Asta Sans", cursive; font-size: 19px; line-height: 1.2;
+  }
+  .m-nav a { text-decoration: none; padding: 5px 12px; margin: 0 -12px; }
+  .m-nav a[aria-current] { background: url(../assets/5374a33a8e8b.svg) center / 100% 100% no-repeat; }
+
+  /* sections */
+  .m-sec { padding: 0 20px; margin: 72px 0; }
+  .m-sec--tight { margin: 40px 0; }
+  .m-h2 { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 28px; line-height: 1.2; margin-bottom: 22px; }
+  .m-h3 { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 19px; line-height: 1.3; margin-bottom: 12px; }
+  .m-h3--gap { margin-top: 40px; }
+  .m-p + .m-p { margin-top: 14px; }
+  .m-lead { font-size: 15px; line-height: 1.75; }
+  .m-art { margin: 28px auto 0; }
+  .m img.m-art--xs { max-width: 52%; }
+  .m img.m-art--sm { max-width: 78%; }
+  .m img.m-art--md { max-width: 88%; }
+  .m-bleed { margin-left: -20px; margin-right: -20px; }
+  .m-bleed img { width: 100%; }
+  .m-center { text-align: center; }
+
+  /* hero */
+  .m-hero { padding: 16px 20px 0; }
+  .m-hero img { margin: 0 auto; }
+  .m-quote { font-family: Salted, "Patrick Hand SC", cursive; font-size: 17px; line-height: 1.5; text-align: center; margin-top: 22px; }
+
+  /* index: product cards */
+  .m-more { font-size: 13px; font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 14px; }
+  .m-cards { display: grid; gap: 26px; }
+  .m-card { display: block; text-decoration: none; width: 82%; }
+  .m-card:nth-child(even) { margin-left: auto; }
+  .m-card img { width: 100%; }
+  .m-card span { display: block; margin-top: 6px; font-size: 15px; font-weight: 700; text-align: center; }
+  .m-card span b { font-size: 18px; margin-right: 2px; }
+
+  /* core values: brand bubble shapes with live text */
+  .m-cvs { display: grid; gap: 12px; margin-top: 8px; }
+  .m-cv {
+    width: 84%; aspect-ratio: var(--ar); background: center / 100% 100% no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding-bottom: 7%; text-align: center;
+  }
+  .m-cv:nth-child(even) { margin-left: auto; }
+  .m-cv strong { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 600; font-size: 21px; line-height: 1.2; }
+  .m-cv span { font-size: 13px; font-weight: 500; margin-top: 2px; }
+
+  /* definitions (KICK / SKIP) */
+  .m-def { margin-top: 18px; font-size: 14px; line-height: 1.7; }
+  .m-def dt { font-weight: 700; }
+  .m-def dd { font-weight: 500; }
+  .m-def + .m-def { margin-top: 14px; }
+
+  /* bubbles grid (keywords, core values) */
+  .m-bubbles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 10px; align-items: center; margin-top: 8px; }
+  .m-bubbles img { margin: 0 auto; }
+  .m-bubbles .m-wide { grid-column: 1 / -1; max-width: 60%; }
+
+  /* rows with rules (purpose / tone & manner) */
+  .m-rows > div { padding: 18px 0; border-top: 1px solid #8a8a8a; }
+  .m-rows > div:first-child { border-top: 0; padding-top: 0; }
+  .m-rows dt, .m-rows .m-h3 { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 18px; margin-bottom: 6px; }
+  .m-rows dd { font-size: 15px; line-height: 1.7; }
+  .m-rows ul { list-style: disc; padding-left: 1.2em; font-size: 15px; line-height: 1.75; }
+  .m-tone { display: grid; grid-template-columns: 7.2em 1fr; gap: 4px 10px; font-size: 14.5px; line-height: 1.6; }
+  .m-tone dt { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 14.5px; margin: 0; }
+
+  /* graphics: color swatches */
+  .m-swatches { margin: 26px -20px 0; }
+  .m-swatch { display: flex; justify-content: space-between; align-items: flex-end; padding: 14px 20px 12px; min-height: 92px; }
+  .m-swatch--s { min-height: 56px; }
+  .m-swatch small { font-size: 12px; align-self: flex-start; }
+  .m-swatch strong { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 500; font-size: 30px; line-height: 1; }
+
+  /* graphics: typography specimen */
+  .m-type > div { padding: 20px 0 22px; background: url(../assets/d1921de8c877.svg) left bottom / 100% 6px no-repeat; }
+  .m-type .m-h3 { font-size: 16px; margin-bottom: 10px; }
+  .m-type p { font-size: 17px; line-height: 1.45; }
+  .m-type p + p { margin-top: 12px; }
+  .m-type .m-lefty { transform: rotate(-6deg); transform-origin: left center; font-size: 19px; line-height: 1.35; margin: 6px 0 10px; }
+
+  /* graphics: icon grid */
+  .m-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 8px; margin-top: 26px; text-align: center; font-size: 13px; }
+  .m-icons img { margin: 0 auto 6px; height: 54px; width: auto; }
+
+  /* graphics: layout diagrams */
+  .m-layouts { display: grid; gap: 30px; margin-top: 24px; }
+  .m-layouts figure { margin: 0; }
+  .m-layouts img { width: 82%; }
+  .m-layouts figcaption { font-size: 14px; line-height: 1.65; margin: 8px 0 0 18%; }
+
+  /* detail pages: purchase block */
+  .m-buy { padding: 8px 20px 0; }
+  .m-buy-img { width: 100%; margin-bottom: 18px; }
+  .m-buy-sub { font-size: 13px; color: #333; }
+  .m-buy-title { font-size: 20px; font-weight: 700; line-height: 1.35; margin-top: 2px; }
+  .m-buy-title .m-salted { font-size: 22px; margin-right: 4px; }
+  .m-rating { display: flex; align-items: center; gap: 2px; margin-top: 8px; font-size: 12px; color: #444; }
+  .m-rating img { width: 17px; height: 16px; }
+  .m-rating span { margin-left: 8px; }
+  .m-price { font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-weight: 700; font-size: 26px; margin-top: 6px; }
+  .m-ship { display: grid; grid-template-columns: 3.4em 1fr; margin-top: 16px; font-size: 14.5px; line-height: 1.75; }
+  .m-ship dt { color: #555; }
+  .m-mute { color: #555; }
+  .m-eta { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding: 11px 12px; background: #f1f1f1; font-size: 14.5px; }
+  .m-eta img:first-child { width: 20px; }
+  .m-eta img:last-child { width: 20px; margin-left: auto; }
+  .m-opt-label { margin-top: 26px; font-size: 12px; color: #444; }
+  .m-select { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding: 11px 14px; border: 1px solid #333; font-size: 15px; font-weight: 700; }
+  .m-select img { width: 14px; }
+  .m-total { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-weight: 700; font-size: 15px; }
+  .m-total strong { font-size: 24px; }
+  .m-actions { display: grid; grid-template-columns: 54px 1fr 1fr; gap: 8px; margin-top: 16px; }
+  .m-actions > span { display: flex; align-items: center; justify-content: center; height: 46px; border: 1px solid #000; font-weight: 700; font-size: 15px; }
+  .m-actions .m-qty { justify-content: space-between; padding: 0 8px 0 12px; }
+  .m-actions .m-qty i { font-style: normal; font-size: 10px; line-height: 1.3; display: flex; flex-direction: column; border-left: 1px solid #000; padding-left: 6px; }
+  .m-actions .m-primary { background: #fcee00; }
+  .m-divider { margin: 34px 0 26px; }
+
+  /* detail pages: info table + other products */
+  .m-info { padding: 0 20px; margin: 30px 0 0; font-size: 13px; line-height: 1.55; }
+  .m-info > div { display: grid; grid-template-columns: 8.4em 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid #ddd; }
+  .m-info dt { color: #666; }
+  .m-info dd { color: #111; }
+  .m-others { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-items: end; }
+  .m-others a, .m-others div { display: block; }
+
+  /* product page */
+  .m-items-title { font-family: Salted, "Patrick Hand SC", cursive; font-size: 44px; line-height: 1; margin: 6px 0 26px; }
+
+  /* footer */
+  .m-foot { padding: 0 20px 34px; margin-top: 72px; }
+  .m-foot-art { display: flex; justify-content: space-between; align-items: flex-end; }
+  .m-foot-art > img { width: 34%; }
+  .m-foot-brand { text-align: right; }
+  .m-foot-brand img { width: 46px; margin: 0 0 4px auto; }
+  .m-foot-brand span { font-family: Salted, "Patrick Hand SC", cursive; font-size: 16px; white-space: nowrap; }
+  .m-foot-line { width: 100%; height: 3px; margin: 12px 0 14px; }
+  .m-foot-info { display: grid; gap: 10px; font-family: "Special Gothic", "Asta Sans", sans-serif; font-variation-settings: "wdth" 100; font-size: 12px; line-height: 1.5; color: #141414; }
+  .m-foot-info a { text-decoration: none; }
+  .m-foot-info .m-copy { font-weight: 700; }
+}
+
+@media(max-width:767px){
+.m .m-select.purchase-ui{display:block;padding:0;border:0;margin-top:8px}
+.m .m-select.purchase-ui select{height:46px;font-size:14px}
+.m .m-select.purchase-ui .mesh-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.m .m-select.purchase-ui .mesh-options select{height:40px;font-size:12px;padding:0 30px 0 8px;background-position:right 8px center;background-size:12px}
+.m .m-actions.purchase-actions{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:7px;align-items:stretch}
+.m .m-actions.purchase-actions .qty-box{display:grid;grid-template-columns:minmax(0,1fr) 23px;width:64px;height:46px}
+.m .m-actions.purchase-actions .qty-value{font-size:17px}
+.m .m-actions.purchase-actions .qty-buttons{display:grid;grid-template-rows:1fr 1fr}
+.m .m-actions.purchase-actions .buy-btn{font-size:14px;height:46px;padding:0 4px}
+.m .ship-info-wrap--mobile{margin-left:auto;flex:0 0 20px;width:20px;height:20px}
+.m .ship-info-wrap--mobile .ship-tooltip{right:0;max-width:210px}
+.m .m-eta{min-width:0}
+.m .m-eta>span:not(.ship-info-wrap){min-width:0}
+.m-items-title{font-size:44px;line-height:1;margin:6px 0 26px}
+}
+
+@media(max-width:767px){.m-eta .ship-info-wrap--mobile{margin-left:auto}.m-eta .ship-info-wrap--mobile img{width:20px;height:20px}.m-eta .ship-info-wrap--mobile .ship-tooltip{right:0}}
