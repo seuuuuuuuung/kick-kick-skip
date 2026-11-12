@@ -1,0 +1,19 @@
+/* Protect the original Figma composition from commerce typography and image resets. */
+.page p{margin:0!important}.page h1,.page h2,.page h3{margin:0}.page img.max-w-none{max-width:none!important}
+.shop-header{height:clamp(88px,11vh,130px);padding:0 8%;gap:4%}.header-icons img{mix-blend-mode:multiply}.header-icons a{isolation:auto!important}.header-icons a:before{z-index:0!important}.header-icons img,.cart-count{position:relative;z-index:1}.philosophy-audio-toggle{display:none!important}
+body>.stage{width:var(--canvas-width,84vw);margin:0 auto;height:calc((var(--h) - 150)*var(--layout-scale,1)*1px)}
+body>.stage>.page{transform:translateY(calc(-150px * var(--layout-scale,1))) scale(var(--layout-scale,1))!important}
+.shop{width:min(1360px,80%);margin-top:35px}.shop-footer{width:min(1360px,80%)}
+.original-product-hero{position:relative;overflow:hidden;height:calc(1040px * var(--hero-scale,1));margin-bottom:45px}
+.original-product-hero .page{width:1920px;transform:translate(calc(-200px * var(--hero-scale,1)),calc(-230px * var(--hero-scale,1))) scale(var(--hero-scale,1))!important;overflow:visible}
+.original-purchase-slot{position:absolute;left:1152px;top:650px;width:526px;font-size:18px;z-index:40;background:white}
+.original-purchase-slot .purchase-widget{padding:0}.original-purchase-slot .wish{margin:8px 0!important}
+.mobile-product-hero{display:none}.detail-layout{grid-template-columns:minmax(0,1fr) minmax(245px,28%);gap:5%;align-items:start}.detail-buy{position:sticky;top:24px;max-height:calc(100dvh - 48px);overflow:auto}.detail-art{display:block!important}.detail-art .page{height:calc(var(--h)*1px)}
+@media(max-width:900px){.shop{width:86%}.shop-header{padding:0 6%}.shop-header nav a{font-size:25px}.detail-layout{gap:4%}}
+@media(max-width:767px){body>.stage:not(.m-window){display:none}.shop-header{height:105px}.shop-header nav a{font-size:22px}.shop{width:88%;margin-top:25px}.original-product-hero{display:none}.mobile-product-hero{display:grid;gap:20px}.detail-layout{display:block}.detail-buy{display:block;position:sticky;bottom:0;top:auto;background:white;border-top:1px solid;padding:14px;max-height:45vh}.m{padding-left:5vw;padding-right:5vw}.m .m-hero{margin-left:0;margin-right:0}.float-tools{right:12px}.single-photo-page .m{padding:0}}
+html,body{overflow-x:clip!important;overflow-y:visible!important}
+
+body>.stage{visibility:hidden}.layout-ready body>.stage{visibility:visible}
+
+.purchase-actions{grid-template-columns:48px minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:stretch}.shop .heart-button{display:grid;place-items:center;padding:8px!important;background:white;color:#111}.heart-button svg{width:27px;height:27px}.heart-button path{fill:transparent;stroke:currentColor;stroke-width:1.7}.shop .heart-button.is-wished{color:#e53935}.heart-button.is-wished path{fill:currentColor}.detail-buy .purchase-actions{grid-template-columns:44px minmax(0,1fr) minmax(0,1fr)}
+.native-camera{position:relative;display:block;border:1px solid #111;padding:9px 18px;background:white;font-size:13px;max-width:300px;margin:6px auto;overflow:hidden}.native-camera input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.phone-entry{position:absolute;right:3vw;top:40%;width:170px;border:1px solid #111;padding:15px;background:white;font-size:12px}.phone-entry img{width:130px}.photo-download{display:block;background:#fff000;padding:12px;border:1px solid #111;margin:12px 0}.single-photo-page .camera-composite{width:min(55vh,60vw,650px);height:min(55vh,60vw,650px)}@media(max-width:767px){.phone-entry{display:none}.single-photo-page .camera-composite{width:min(80vw,48svh);height:min(80vw,48svh)}}
