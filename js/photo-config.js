@@ -1,7 +1,6 @@
-// Enter your Supabase project URL and publishable/anon key (NOT service_role).
-// Set a PUBLIC bucket named photobooth and an INSERT policy for anon uploads.
+// Public browser configuration. Never place a secret/service_role key here.
 window.KKS_SUPABASE = {
-  url: '', // e.g. https://YOUR_PROJECT.supabase.co
-  anonKey: '', // Supabase publishable/anon key
+  url: 'https://tizenxnvfchegstmzdoz.supabase.co',
+  anonKey: 'sb_publishable_7uY7JWSg4ZdTD1BXqno1kQ_ZGcKe4vR',
   bucket: 'photobooth'
 };

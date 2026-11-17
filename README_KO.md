@@ -32,7 +32,14 @@ with check (
 서버가 공개 HTTPS 주소에 배포되어 있고 `KKS_PUBLIC_URL=https://...` 가 설정돼 있어야 QR이 나옵니다. 기존 `server.py` 방식은 유지했습니다. GitHub Pages에만 배포하면 Python 서버는 실행되지 않습니다.
 
 ## 주의
-- Supabase 주소와 키는 사용자에게서 제공되지 않아 빈칸입니다. 따라서 현재 ZIP만 GitHub Pages에 업로드해서는 **QR 공유가 활성화되지 않습니다**.
+- Supabase 프로젝트 URL과 publishable key가 입력되어 있습니다. **SUPABASE_SETUP.sql을 Supabase SQL Editor에서 한 번 실행해야** 버킷과 업로드 정책이 준비됩니다. 파일을 GitHub Pages에도 배포해야 합니다.
 - 실제 카메라와 QR을 통한 휴대폰 다운로드는 사용자가 공개 HTTPS로 배포하고 Storage를 연결한 후 실기기로 테스트해야 합니다.
 - 전시를 위해 짧은 보관 주기가 필요하다면 Supabase 삭제 자동화 작업을 별도 설정해야 합니다.
 - ZIP의 `assets` 원본은 유지했습니다.
+
+## v09 Supabase 연결 완료판 안내
+- `js/photo-config.js`에 전달받은 프로젝트 URL 및 공개용 publishable key를 입력했습니다.
+- `sb_publishable_` 키는 JWT가 아니므로 Authorization Bearer 헤더를 제거하고 `apikey`로 전송합니다.
+- **필수:** Supabase Dashboard → SQL Editor에서 ZIP에 포함된 `SUPABASE_SETUP.sql` 실행 후 GitHub Pages에 배포하세요. 현재 이 채팅은 사용자의 Supabase 계정에 대한 SQL 실행 권한이 없어 제가 대신 실행할 수 없습니다.
+- 사진 저장 완료 시 QR이 생성되며, 연결 실패 시 오류와 재시도 버튼이 나타납니다.
+- 촬영 결과 화면은 30초 후 종료되므로 현장 네트워크를 테스트하세요. 파일은 자동으로 만료/삭제되지 않습니다.
