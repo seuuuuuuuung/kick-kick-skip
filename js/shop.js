@@ -29,15 +29,26 @@ if(productPage){const id=productPage.dataset.product,state={product:id,option:''
  function renderPurchase(){ $$('.purchase-slot').forEach(slot=>{slot.innerHTML=`<div class="purchase-widget"><select class="main-option" aria-label="제품 옵션">${options(id,state.option)}</select>${meshSelect(state)}${state.option?`<div class="selected-product"><div class="row-between"><p>${esc(desc(state))}</p><button class="x remove-option" aria-label="선택 옵션 삭제">×</button></div><div class="row-between">${qtyHTML(state)}<b>${money(price(state)*state.qty)}</b></div></div>`:''}<div class="row-between purchase-total"><span>주문금액</span><strong>${money(state.option?price(state)*state.qty:0)}</strong></div><div class="purchase-actions"><button class="wish heart-button ${read('wish',[]).includes(id)?'is-wished':''}" aria-label="찜하기" aria-pressed="${read('wish',[]).includes(id)}"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28C12 24 3 18 3 10 3 2 13 1 16 8 19 1 29 2 29 10 29 18 20 24 16 28Z"/></svg></button><button class="add-cart">장바구니</button><button class="yellow buy-now">바로 구매</button></div></div>`;
  $('.main-option',slot).onchange=e=>{state.option=e.target.value;state.qty=1;state.mesh=id==='basket'&&state.option?Array(state.option.startsWith('2')?4:2).fill('small'):[];renderPurchase()};$$('[data-mesh]',slot).forEach(s=>s.onchange=()=>{state.mesh[+s.dataset.mesh]=s.value;renderPurchase()});$$('[data-step]',slot).forEach(b=>b.onclick=()=>{state.qty=Math.max(1,Math.min(99,state.qty+ +b.dataset.step));renderPurchase()});const rm=$('.remove-option',slot);if(rm)rm.onclick=()=>{state.option='';state.mesh=[];state.qty=1;renderPurchase()};$('.add-cart',slot).onclick=()=>{if(!state.option)return notice('옵션을 먼저 선택해주세요.');addCart(state);const d=modal('<h2>장바구니에 담았습니다.</h2><p>장바구니로 이동할까요?</p><div class="dialog-actions"><button class="continue">계속 쇼핑하기</button><button class="yellow open-cart">장바구니 보기</button></div>');$('.continue',d).onclick=()=>d.close();$('.open-cart',d).onclick=()=>location.href='cart.html'};$('.buy-now',slot).onclick=()=>state.option?goCheckout([{...structuredClone(state),id:uid(),selected:true}]):notice('옵션을 먼저 선택해주세요.');$('.wish',slot).onclick=()=>{let wish=read('wish',[]);wish=wish.includes(id)?wish.filter(x=>x!==id):[...wish,id];write('wish',wish);$$('.wish').forEach(b=>{b.classList.toggle('is-wished',wish.includes(id));b.setAttribute('aria-pressed',wish.includes(id))})};});}
  renderPurchase();
- // The original product artwork is a scaled Figma canvas, so the tooltip must be part of that canvas.
- const hero=$('.original-hero-page > div');
- if(hero){
-   const hint=document.createElement('span');hint.className='shipping-hint shipping-hint--desktop';
-   hint.innerHTML='<button type="button" class="shipping-info-trigger" aria-label="배송 예정일 안내" aria-describedby="delivery-tip">!</button><span id="delivery-tip" class="shipping-tip" role="tooltip">배송 예정일은 지역 및 택배사 사정에 따라 달라질 수 있어요.</span>';
-   hero.append(hint);
- }
- $$('.shipping').forEach(el=>{const hint=document.createElement('span');hint.className='shipping-hint shipping-hint--mobile';hint.innerHTML='<button type="button" class="shipping-info-trigger" aria-label="배송 안내">!</button><span class="shipping-tip" role="tooltip">배송 예정일은 지역 및 택배사 사정에 따라 달라질 수 있어요.</span>';el.append(hint)});
- $$('.shipping-info-trigger').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('is-open')));
+ // Keep the existing Figma alert-circle icon. Never create a second exclamation icon.
+ const tipCopy='배송 예정일은 지역 및 택배사 상황에 따라 달라질 수 있어요. 제주도 및 도서산간 지역은 추가 배송비가 발생할 수 있습니다.';
+ $$('.original-product-hero [data-name="alert-circle"], .detail-art [data-name="alert-circle"]').forEach(icon=>{
+   if(icon.dataset.shippingBound)return;
+   icon.dataset.shippingBound='true';
+   icon.classList.add('kks-original-shipping-info');
+   icon.setAttribute('role','button');
+   icon.tabIndex=0;
+   icon.setAttribute('aria-label','배송 안내');
+   const tip=document.createElement('span');tip.className='kks-original-shipping-tip';tip.role='tooltip';tip.textContent=tipCopy;
+   icon.appendChild(tip);
+   icon.addEventListener('click',e=>{e.stopPropagation();icon.classList.toggle('kks-tip-open')});
+   icon.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();icon.classList.toggle('kks-tip-open')}if(e.key==='Escape')icon.classList.remove('kks-tip-open')});
+ });
+ // The mobile purchase area uses its own shipping line; put help on that existing line,
+ // without inserting a new icon or shifting the shipping text.
+ $$('.mobile-product-hero .shipping').forEach(line=>{
+   line.title=tipCopy;
+   line.setAttribute('aria-label',line.textContent.trim()+' — '+tipCopy);
+ });
  const art=$('.detail-art');const resize=()=>{art.style.setProperty('--detail-scale',art.clientWidth/Number(art.dataset.width));};new ResizeObserver(resize).observe(art);resize();
 }
 function summary(items,checkout=false){return `<aside class="summary"><h3>${checkout?'최종 결제 금액':'주문상품 ('+items.reduce((s,i)=>s+i.qty,0)+'개)'}</h3><dl><div><dt>${checkout?'총 상품 금액':'상품 금액'}</dt><dd>${money(total(items))}</dd></div><div><dt>배송비</dt><dd>0원</dd></div>${checkout?'<div><dt>쿠폰 할인</dt><dd>0원</dd></div><div><dt>포인트 사용</dt><dd>0원</dd></div>':''}<div class="sum-total"><dt>최종 결제 금액</dt><dd>${money(total(items))}</dd></div></dl><button class="yellow submit-order" ${items.length?'':'disabled'}>${checkout?money(total(items))+' 결제하기':'주문하기'}</button></aside>`}
