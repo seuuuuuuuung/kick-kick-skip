@@ -5,8 +5,10 @@
  const original=document.querySelector('.original-hero-page > div');if(original)Array.from(original.children).forEach(el=>{if(parseFloat(getComputedStyle(el).top)>1100)el.style.display='none';});
  function fit(){
   const w=document.documentElement.clientWidth,h=innerHeight,header=document.querySelector('.shop-header')?.offsetHeight||0,banner=document.querySelector('.ad-banner')?.offsetHeight||0;
-  let width=Math.min(w*.86,1680);
-  if(page==='index.html')width=Math.min(w*.94,1920);if(page==='graphics.html')width=w;
+  // Shared 1920px artboard: the original footer line at x=250,
+  // width=1420 now aligns with the centered --site-guide on all desktop pages.
+  // Do not use page-specific 94% / 86% scaling: it shifts the page rails.
+  let width=Math.min(w,1920);
   document.documentElement.style.setProperty('--canvas-width',width+'px');document.documentElement.style.setProperty('--layout-scale',width/1920);
   document.documentElement.classList.add('layout-ready');
   const hero=document.querySelector('.original-product-hero');if(hero){hero.style.setProperty('--hero-scale',hero.clientWidth/1520);sizeHero();}

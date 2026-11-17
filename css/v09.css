@@ -1,7 +1,9 @@
-/* KICK KICK SKIP · v14 / unified artboard. Edited from v10 -> v13 source. */
+/* KICK KICK SKIP · v15 / One shared rail based on the original footer artboard. */
 :root{
-  /* Exactly the footer's former 74% line at desktops, max 1420px */
-  --site-guide:min(1420px,74vw);
+  /* Original 1920px Figma footer: line at x=250px, width=1420px.
+     Every centered content block uses that same physical left/right rail. */
+  --site-guide:min(1420px,73.958333333vw);
+  --site-artboard:min(1920px,100vw);
 }
 .shop-header{
   width:var(--site-guide)!important;
@@ -34,6 +36,16 @@
   background:#65cddd;color:#111;pointer-events:none;transform:none!important;
 }
 .shop-header .header-icons .cart-count[hidden]{display:none!important}
+/* The 1920px illustration canvas must be the full responsive artboard.
+   Its 250px / 1670px inner marks now coincide exactly with --site-guide.
+   This changes the artboard transform, not the original illustration placement. */
+@media (min-width:768px){
+  body > .stage:not(.m-window){
+    width:var(--site-artboard)!important;
+    max-width:none!important;
+    margin-inline:auto!important;
+  }
+}
 /* Header, product content, cart, profile and footer all share the exact same rails. */
 .shop:not(.single-photo-app),.shop-footer{
   box-sizing:border-box;
@@ -130,7 +142,6 @@
 .booth-picture .bubbles{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:4;pointer-events:none}
 .booth-picture .shot-count,.booth-picture .camera-message{z-index:5}
 @media(max-width:1280px){
- :root{--site-guide:calc(100% - 64px)}
  .mypage-grid{grid-template-columns:1fr!important;gap:40px!important}
  .profile-card{width:min(455px,100%)!important;min-height:660px!important;margin:0 auto 0 0!important}
 }
@@ -159,4 +170,16 @@
  .ad-banner img{width:calc(100% - 76px)!important;height:39px!important}
  .ad-banner button{right:8px;font-size:27px!important}
  .kks-original-shipping-tip{min-width:200px;max-width:240px;right:0}
+}
+
+/* All phone body content begins/ends at the same 18px footer line.
+   Background illustrations (.m-bleed) may extend to the viewport edges. */
+@media (max-width:767px){
+  .m{padding-left:0!important;padding-right:0!important}
+  .m .m-nav,.m .m-hero,.m .m-sec,.m .m-buy,.m .m-info,.m .m-foot{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+  .m .m-bleed{margin-left:-18px!important;margin-right:-18px!important}
+  .m .m-swatches{margin-left:-18px!important;margin-right:-18px!important}
 }
