@@ -43,3 +43,21 @@ with check (
 - **필수:** Supabase Dashboard → SQL Editor에서 ZIP에 포함된 `SUPABASE_SETUP.sql` 실행 후 GitHub Pages에 배포하세요. 현재 이 채팅은 사용자의 Supabase 계정에 대한 SQL 실행 권한이 없어 제가 대신 실행할 수 없습니다.
 - 사진 저장 완료 시 QR이 생성되며, 연결 실패 시 오류와 재시도 버튼이 나타납니다.
 - 촬영 결과 화면은 30초 후 종료되므로 현장 네트워크를 테스트하세요. 파일은 자동으로 만료/삭제되지 않습니다.
+
+
+## 사진 24시간 자동 삭제 (추가 설정 필수)
+이 배포본에는 `.github/workflows/cleanup-photos.yml` 및 `scripts/cleanup_photos.py`를 추가했습니다.
+
+1. **GitHub 저장소**에 ZIP의 숨김 폴더 `.github`와 `scripts`를 포함해 모든 파일을 업로드합니다. GitHub 웹에서 파일을 하나씩 올릴 때는 숨김 폴더도 포함되었는지 확인하세요.
+2. **Supabase Dashboard → Project Settings → API Keys**에서 `service_role` (legacy secret JWT)를 확인합니다. 이 키는 절대로 채팅으로 전송하거나 `js/photo-config.js`, HTML, 공개 저장소에 넣지 마세요.
+3. **GitHub 저장소 → Settings → Secrets and variables → Actions → New repository secret**에서 이름 `SUPABASE_SERVICE_ROLE_KEY`로 저장합니다.
+4. **GitHub → Actions → Delete photobooth photos after 24 hours → Run workflow**를 한 번 실행하고, 성공 로그를 확인합니다.
+5. 기본 브랜치의 Actions가 활성화된 상태로 유지되어야 이후 매시간 **17분**에 실행 예약됩니다. GitHub 예약 워크플로는 지연되거나 실행이 누락될 수 있으며, 비활성 저장소의 예약 실행은 자동 중지될 수 있습니다. **정확히 24시간에 삭제된다는 보장은 없습니다.** 일반적으로 24~25시간 후 삭제를 목표로 합니다.
+
+### 보안 및 실제 운영 주의
+- GitHub Secret에 넣는 `service_role`은 관리자 권한입니다. **일반 공개 키(`sb_publishable_...`)로는 삭제할 수 없습니다.** 프로젝트와 Secret 접근 권한을 제한해야 합니다.
+- GitHub Actions 로그에 삭제된 파일 개수만 출력합니다. 코드가 해당 버킷의 48자리 소문자 16진수 ID JPG만 삭제하도록 제한합니다.
+- 삭제는 Supabase Storage API를 통해 이루어져 실제 저장 공간을 정리합니다. 버킷을 공개로 유지하는 기존 정책은 변경하지 않습니다.
+- 삭제 작업이 실패/지연되면 공개 링크로 사진에 더 오래 접근할 수 있습니다. 법적·계약상 **엄격한 24시간 만료**가 필수라면 공개 버킷 대신 비공개 버킷, 만료되는 접근 토큰 및 서버 측 자동화를 별도로 구성해야 합니다.
+- 삭제 이후에는 기존 QR로 사진을 열 수 없습니다.
+- SQL 초기 설정(`SUPABASE_SETUP.sql`)과 GitHub Pages 배포가 아직 끝나지 않았다면 먼저 완료하세요.
