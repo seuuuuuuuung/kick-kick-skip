@@ -1,0 +1,76 @@
+
+/* v12 — final override. A single shared content grid for all pages. */
+:root{--kks-content:1360px;--kks-gutter:clamp(20px,5.5vw,112px)}
+html,body{max-width:100%;overflow-x:clip}
+.shop-header{height:clamp(102px,8vw,148px)!important;display:flex!important;align-items:center!important;padding-inline:max(var(--kks-gutter),calc((100vw - var(--kks-content))/2))!important;gap:0!important}
+.shop-header nav{flex:0 1 770px!important;max-width:770px!important;width:min(62%,770px);min-width:0!important;display:flex!important;justify-content:space-between!important;gap:clamp(16px,3vw,70px)!important}
+.shop-header nav a{white-space:nowrap;font-size:clamp(20px,1.65vw,30px)!important}
+.shop-header .header-icons{margin-left:auto!important;display:flex!important;align-items:center;gap:clamp(16px,1.7vw,28px)!important}
+.shop-header .header-icons img{width:clamp(27px,2vw,36px)!important;height:clamp(27px,2vw,36px)!important;object-fit:contain!important}
+.shop:not(.single-photo-app){width:calc(100% - 2*var(--kks-gutter))!important;max-width:var(--kks-content)!important;margin-inline:auto!important}
+.ad-banner{height:70px!important;max-height:70px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#66cada;position:relative}
+.ad-banner img{display:block!important;width:min(760px,calc(100% - 130px))!important;height:54px!important;max-height:54px!important;object-fit:contain!important;margin:auto!important}
+.ad-banner button{position:absolute!important;right:max(20px,calc((100vw - 1600px)/2))!important;top:50%!important;transform:translateY(-50%);height:42px!important;width:42px!important;min-width:42px!important;padding:0!important;color:#111!important;background:transparent!important;opacity:1!important;font:32px/1 Arial,sans-serif!important;cursor:pointer!important;z-index:5!important}
+.ad-banner button:hover{opacity:.55!important}
+/* Sketchbook native vector keeps its proportions instead of stretching with content. */
+.mypage-grid{grid-template-columns:minmax(280px,360px) minmax(0,1fr)!important;gap:clamp(25px,4vw,65px)!important;align-items:start!important}
+.profile-card{width:100%!important;max-width:360px!important;aspect-ratio:455/510!important;height:auto!important;min-height:0!important;background:url('../assets/v08/sketchbook.svg') center/100% 100% no-repeat!important;box-sizing:border-box!important;align-self:start!important;overflow:hidden!important;padding:clamp(34px,3vw,47px) clamp(24px,2.6vw,38px) 14px!important}
+.profile-card>img{width:clamp(100px,12vw,153px)!important;height:auto!important;margin:0 auto 9px!important;object-fit:contain!important}
+.profile-card h2{font-size:clamp(19px,1.8vw,26px)!important}
+.profile-card .muted{font-size:clamp(12px,1.1vw,15px)!important;margin-bottom:8px!important}
+.profile-card button{font-size:clamp(13px,1.2vw,17px)!important;padding:12px 14px 12px 4px!important;min-height:48px!important;white-space:nowrap!important;display:flex!important;align-items:center!important;gap:12px!important}
+.profile-card button img{width:25px!important;height:25px!important;margin:0 6px 0 0!important;flex-shrink:0!important}
+.summary{background:url('../assets/v08/sketchbook.svg') center top/100% auto no-repeat!important;padding:clamp(42px,5vw,62px) 32px 30px!important;min-height:340px!important}
+.dialog:not(.thank-dialog){box-shadow:none!important;border:2px solid #111!important}
+.dialog:not(.thank-dialog)::after{box-shadow:none!important}
+.thank-dialog{width:min(530px,calc(100vw - 36px))!important;max-width:530px!important;padding:clamp(22px,3.8vw,42px)!important;box-sizing:border-box!important}
+.thank-dialog img{max-width:110px!important;max-height:110px!important;object-fit:contain!important}
+.order-product-link,.cart-product>a{display:block!important;flex-shrink:0}
+.order-meta a,.cart-product h2 a{color:inherit!important;text-decoration:none!important}
+.order-meta a:hover,.cart-product h2 a:hover{text-decoration:underline!important}
+.cart-product img,.order-product-link img{object-fit:cover!important}
+.shop input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;border:1.8px solid #111!important;border-radius:50%!important;background:#fff!important;position:relative!important;width:23px!important;height:23px!important;flex-shrink:0!important;vertical-align:middle!important}
+.shop input[type=checkbox]:checked{background:#69cede!important;border-color:#69cede!important}
+.shop input[type=checkbox]:checked::after{content:'';position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.option-line input[type=checkbox]{display:none!important}
+.checkout-section select,.purchase-widget select,.form-row select{padding-right:36px!important;box-sizing:border-box!important}
+.checkout-section .form-row:has(#email-user) #email-user{flex:0 1 49%!important;width:49%!important}
+.checkout-section .form-row:has(#email-user) #email-select{flex:1 1 35%!important;width:auto!important}
+.detail-layout{width:100%!important;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr)!important;gap:clamp(28px,5vw,76px)!important}
+.detail-layout>*,.commerce-grid>*{min-width:0!important}
+.delivery-hint{position:relative;display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border:2px solid #777;border-radius:50%;font:700 15px Arial!important;cursor:help;margin-left:8px}
+.delivery-hint .delivery-tip{display:none;position:absolute;right:-20px;bottom:calc(100% + 12px);width:min(290px,75vw);border:1.5px solid #111;background:white;z-index:100;padding:14px 16px;box-shadow:none;font:13px/1.5 'Asta Sans',sans-serif;color:#111;text-align:left}
+.delivery-hint:hover .delivery-tip,.delivery-hint:focus-within .delivery-tip{display:block}
+.booth-picture{left:24%!important;top:16%!important;width:52%!important;aspect-ratio:695/631!important;clip-path:none!important;overflow:hidden!important}
+.booth-picture video{position:absolute!important;inset:1.5%!important;width:97%!important;height:97%!important;object-fit:cover!important;clip-path:polygon(1% 2%,15% 1%,50% 3%,98% 1%,99% 97%,75% 99%,1% 99%)!important}
+.booth-picture .frame-line{inset:0!important;width:100%!important;height:100%!important;object-fit:fill!important;pointer-events:none!important}
+.result-picture{left:24%!important;width:52%!important}
+@media(max-width:900px){
+ :root{--kks-gutter:clamp(18px,4vw,36px)}
+ .shop-header{height:105px!important}
+ .shop-header nav{width:70%;gap:14px!important}
+ .shop-header nav a{font-size:clamp(16px,2.5vw,23px)!important}
+ .detail-layout{grid-template-columns:1fr!important}
+ .mypage-grid{grid-template-columns:minmax(230px,300px) minmax(0,1fr)!important;gap:22px!important}
+ .profile-card{padding:30px 22px 12px!important}
+ .profile-card button{padding:8px 6px!important}
+}
+@media(max-width:680px){
+ .ad-banner{height:54px!important;max-height:54px!important}
+ .ad-banner img{height:48px!important;width:calc(100% - 60px)!important}
+ .ad-banner button{right:7px!important;width:32px!important;min-width:32px!important;font-size:26px!important}
+ .shop-header{height:auto!important;min-height:98px!important;display:flex!important;flex-direction:column-reverse!important;align-items:stretch!important;justify-content:center!important;padding:12px var(--kks-gutter) 15px!important;gap:14px!important}
+ .shop-header .header-icons{align-self:flex-end!important;margin-left:auto!important}
+ .shop-header nav{flex:initial!important;max-width:none!important;width:100%!important;justify-content:space-between!important;gap:6px!important}
+ .shop-header nav a{font-size:clamp(16px,4vw,22px)!important}
+ .mypage-grid{grid-template-columns:1fr!important;justify-items:center!important}
+ .profile-card{max-width:360px!important;width:100%!important;padding:38px 28px 12px!important}
+ .profile-card>img{width:135px!important}
+ .booth-picture{left:4%!important;top:20%!important;width:92%!important}
+ .result-picture{left:9%!important;width:82%!important;top:15%!important}
+ .booth-board h1{top:8%!important}
+ .receipt{height:100svh!important;min-height:100svh!important;padding:9px 20px 8px!important;overflow:hidden!important}
+ .receipt .receipt-photo{min-height:0!important;flex:1 1 auto!important}
+ .receipt-actions{margin:5px 10px 0!important}
+ .receipt-help{margin:4px auto 0!important}
+}
