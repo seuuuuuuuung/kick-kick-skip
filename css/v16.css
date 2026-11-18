@@ -29,7 +29,7 @@
  body.kks-page-index>.stage{height:calc((var(--h) - 550) * var(--z,1) * 1px)!important}
  body.kks-page-product>.stage{height:calc((var(--h) - 260) * var(--z,1) * 1px)!important}
  /* Detail images and purchase information share the inset of the upper product image. */
- .product-page .detail-layout{width:93.4%!important;max-width:93.4%!important;margin-inline:auto!important}
+ .product-page .detail-layout{width:100%!important;max-width:100%!important;margin-inline:0!important}
 }
 @media(max-width:767px){
  .kks-unified-footer{margin:42px auto 20px!important}
