@@ -24,14 +24,22 @@
 }
 
 /* v28: the supplied SVGs are the icon originals; avoid global SVG stroke overrides. */
-/* Footer: keep right-aligned brand logo but give the iron a bit more presence and space. */
+/* Footer: the iron belongs above the START of MAKE ROOM FOR LIFE, not
+   pushed to the far right. Move the drawing closer to the lettering without
+   changing the slogan's position or the footer baseline. */
+.kks-unified-footer .footer-art > div {
+  align-items:flex-start !important;
+  text-align:left !important;
+}
 .kks-unified-footer .footer-art > div img {
-  width:clamp(57px,5.3vw,81px) !important;
+  display:block !important;
+  width:clamp(61px,5.4vw,82px) !important;
   max-width:none !important;
   height:auto !important;
+  align-self:flex-start !important;
   position:relative;
-  top:11px !important;
-  margin:0 0 16px auto !important;
+  top:14px !important;
+  margin:0 0 7px clamp(12px,1.5vw,23px) !important;
 }
 /* The copyright is Special Gothic, not the page's default Asta Sans. */
 .kks-unified-footer .footer-info > b {
@@ -58,10 +66,27 @@
 }
 @media (max-width:767px) {
   .kks-unified-footer .footer-art > div img {
-    width:clamp(46px,12vw,56px) !important;
-    top:8px !important;
-    margin-bottom:13px !important;
+    width:clamp(48px,12vw,58px) !important;
+    top:10px !important;
+    margin:0 0 6px clamp(8px,2vw,13px) !important;
+    align-self:flex-start !important;
   }
   .single-photo-app .booth-home {font-size:clamp(18px,4.7vw,23px) !important;gap:5px !important}
   .single-photo-app .booth-home .booth-home-arrow {width:clamp(28px,8vw,35px)}
 }
+
+/* Photobooth HOME: matched optical centers for the 43×24 hand-drawn arrow
+   and the Salted lettering. No changes to other arrows/site navigation. */
+.single-photo-app .booth-home {align-items:center !important;}
+.single-photo-app .booth-home .booth-home-arrow {
+  align-self:center !important;
+  flex-shrink:0 !important;
+  object-fit:contain !important;
+}
+.single-photo-app .booth-home span {
+  display:block !important;
+  line-height:1 !important;
+  position:relative;
+  top:-5px;
+}
+@media(max-width:767px){.single-photo-app .booth-home span{top:-2.5px}}
