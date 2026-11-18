@@ -1,0 +1,78 @@
+/* v22: strictly scoped product-info spacing and supplied floating/icon SVGs. */
+@media (min-width:768px) {
+  /* Scale the ENTIRE right-hand typography/artwork group uniformly toward
+     the product image, preserving its original right alignment and proportions. */
+  .original-product-hero .kks-product-info-expanded {
+    position:absolute;
+    left:0;top:0;
+    width:1920px;
+    height:1030px;
+    transform:scale(1.10);
+    transform-origin:1639px 320px;
+  }
+  .original-product-hero .original-purchase-slot {
+    left:1129px!important;
+    width:510px!important;
+    max-width:510px!important;
+    transform:scale(1.10);
+    transform-origin:right top;
+  }
+}
+/* One user-supplied heart silhouette in the product wish and profile menu. */
+.shop .heart-button img {
+  display:block;
+  width:27px;
+  height:24px;
+  max-width:none;
+  object-fit:contain;
+}
+.shop .heart-button.is-wished img {
+  filter:invert(32%) sepia(91%) saturate(3105%) hue-rotate(344deg) brightness(100%) contrast(98%);
+}
+.mypage-grid .profile-card #wishes img {
+  width:25px!important;
+  height:23px!important;
+  object-fit:contain!important;
+}
+/* Exact submitted "up" illustration replaces CSS-drawn circle and arrow. */
+.float-tools .to-top {
+  border:0!important;
+  background:transparent!important;
+  padding:0!important;
+  width:62px;
+  height:62px;
+  border-radius:0;
+  display:grid;
+  place-items:center;
+  box-shadow:none!important;
+  line-height:normal!important;
+}
+.float-tools .to-top img {
+  display:block;width:100%;height:100%;object-fit:contain;
+}
+.float-tools .photo-float {
+  border:0!important;
+  background:transparent!important;
+  transform:none!important;
+  transition:none!important;
+  line-height:0;
+}
+.float-tools .photo-float img {
+  display:block;
+  width:clamp(68px,5.8vw,90px);
+  height:auto;
+  animation:kks-photo-gentle-sway 3.6s ease-in-out infinite;
+  transform-origin:50% 82%;
+  will-change:transform;
+}
+@keyframes kks-photo-gentle-sway {
+  0%,100% {transform:translate(0,0) rotate(-3deg)}
+  50% {transform:translate(2px,-3px) rotate(4deg)}
+}
+@media (max-width:767px) {
+  .float-tools .to-top {width:46px;height:46px}
+  .float-tools .photo-float img {width:64px}
+}
+@media (prefers-reduced-motion:reduce) {
+  .float-tools .photo-float img {animation:none}
+}
