@@ -1,0 +1,72 @@
+/* v25 | requested refinements only; v24 remains the base. */
+@media (min-width:768px) {
+  /* Delivery: shorten only the grey background from the left, keeping the truck,
+     ETA text, original tooltip icon, and right edge in their existing positions. */
+  .original-product-hero [data-kks-shipping-bar="true"] {
+    left:1207px !important;
+    width:455px !important; /* right = 1662px, same as existing v24 rail */
+  }
+}
+/* Unified SHOP footer: the two outer captions are quieter, copyright exactly
+   centered in the page using symmetric grid tracks. */
+.kks-unified-footer .footer-info {
+  grid-template-columns: minmax(0,1fr) max-content minmax(0,1fr) !important;
+  gap:clamp(10px,1.4vw,22px) !important;
+  align-items:start;
+}
+.kks-unified-footer .footer-info > span {
+  font-size:clamp(9px,.70vw,12px) !important;
+  line-height:1.6 !important;
+}
+.kks-unified-footer .footer-info > b {
+  grid-column:2;
+  justify-self:center;
+  text-align:center !important;
+  font-size:clamp(10px,.80vw,13px) !important;
+  line-height:1.6 !important;
+  white-space:nowrap;
+}
+.kks-unified-footer .footer-info > span:first-child {grid-column:1;justify-self:start;text-align:left}
+.kks-unified-footer .footer-info > span:last-child {grid-column:3;justify-self:end;text-align:right !important}
+/* Move only the original thin-line iron slightly down; keep art sizing intact. */
+.kks-unified-footer .footer-art > div img {
+  position:relative;
+  top:5px;
+}
+/* Same icon centre rail and text start rail for every profile menu row. */
+.mypage-grid .profile-card > button#history,
+.mypage-grid .profile-card > button#wishes,
+.mypage-grid .profile-card > button#profile-edit {
+  display:grid !important;
+  grid-template-columns: clamp(27px,2.8vw,37px) minmax(0,1fr) 20px !important;
+  column-gap:clamp(12px,1.35vw,21px) !important;
+  align-items:center !important;
+}
+.mypage-grid .profile-card > button#history > img,
+.mypage-grid .profile-card > button#wishes > img,
+.mypage-grid .profile-card > button#profile-edit > img {
+  grid-column:1;
+  justify-self:center !important;
+  align-self:center !important;
+  margin:0 !important;
+  max-width:100% !important;
+}
+.mypage-grid .profile-card .profile-menu-title {
+  grid-column:2;
+  justify-self:start;
+  margin:0 !important;
+  text-align:left !important;
+}
+.mypage-grid .profile-card .profile-menu-arrow {
+  grid-column:3;
+  justify-self:end;
+  margin:0 !important;
+  padding:0 !important;
+}
+@media (max-width:767px) {
+  .kks-unified-footer .footer-info {grid-template-columns:minmax(0,1fr) !important;gap:7px !important}
+  .kks-unified-footer .footer-info > span {font-size:10px !important}
+  .kks-unified-footer .footer-info > span:first-child {grid-column:1;justify-self:start}
+  .kks-unified-footer .footer-info > b {grid-column:1;justify-self:center;text-align:center !important;font-size:11px !important}
+  .kks-unified-footer .footer-info > span:last-child {grid-column:1;justify-self:end;text-align:right !important}
+}
