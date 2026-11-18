@@ -2,8 +2,8 @@
 /* Product hero: grey delivery bar and its original info icon end at the same
    x-position as the original yellow purchase button (Figma x=1639). */
 @media(min-width:768px){
- .original-product-hero [data-kks-shipping-bar="true"]{width:429px!important}
- .original-product-hero [data-kks-shipping-icon="true"]{margin-left:-35px!important}
+ .original-product-hero [data-kks-shipping-bar="true"]{left:1152px!important;width:510px!important}
+ .original-product-hero [data-kks-shipping-icon="true"]{left:1623px!important;margin-left:0!important}
 }
 /* Restore original Figma "다른 제품 더 보기" graphic and all 3 interactive cards
    as a separate strip after the full detail, without the old duplicate footer. */
