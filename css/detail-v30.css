@@ -3,5 +3,11 @@
 .product-page .kks-detail-image-stack {display:block;width:100%;max-width:100%;overflow:visible;background:#fff;}
 .product-page .kks-detail-slice {position:relative;display:block;width:100%;line-height:0;margin:0;padding:0;overflow:hidden;}
 .product-page .kks-detail-slice>img {display:block;width:100%;max-width:100%;height:auto;margin:0;padding:0;border:0;}
-.product-page video.kks-detail-motion {display:block;position:absolute;z-index:1;object-fit:cover;object-position:center center;pointer-events:none;background:#fff;outline:0;border:0;box-shadow:none;margin:0;padding:0;transform:scale(1.045);transform-origin:center center;}
+/* Clip each moving panel independently: the video must never bleed into the static artwork. */
+.product-page .kks-detail-motion-window {position:absolute;z-index:1;overflow:hidden;isolation:isolate;background:#fff;line-height:0;}
+.product-page .kks-detail-motion-window video.kks-detail-motion {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;background:#fff;outline:0;border:0;box-shadow:none;margin:0;padding:0;transform:scale(1.055);transform-origin:center;}
+/* Original Figma stickers, placed above the videos in the source image coordinates. */
+.product-page .kks-detail-slice > img.kks-detail-motion-label {position:absolute;z-index:3;display:block;width:20.83%;height:auto;pointer-events:none;object-fit:contain;}
+.product-page .kks-detail-motion-label-before {left:21.3887%;top:9.4971%;}
+.product-page .kks-detail-motion-label-after {left:57.6217%;top:9.4971%;}
 @media (max-width:767px){.product-page .kks-detail-image-stack {width:100%;}}
