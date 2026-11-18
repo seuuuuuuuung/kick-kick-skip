@@ -1,0 +1,41 @@
+/* KICK KICK SKIP v20: precise, requested corrections to v19 only. */
+/* Product hero: grey delivery bar and its original info icon end at the same
+   x-position as the original yellow purchase button (Figma x=1639). */
+@media(min-width:768px){
+ .original-product-hero [data-kks-shipping-bar="true"]{width:429px!important}
+ .original-product-hero [data-kks-shipping-icon="true"]{margin-left:-35px!important}
+}
+/* Restore original Figma "다른 제품 더 보기" graphic and all 3 interactive cards
+   as a separate strip after the full detail, without the old duplicate footer. */
+.kks-related-section{width:100vw!important;max-width:1920px!important;margin:clamp(35px,5vw,95px) 0 0;position:relative;left:50%;transform:translateX(-50%)}
+.kks-related-viewport{width:100%;height:calc(1080px * var(--related-scale,1));position:relative;overflow:hidden}
+.kks-related-canvas{position:absolute;left:0;top:0;width:1920px;height:40065px;transform-origin:top left;transform:scale(var(--related-scale,1)) translateY(-38910px);isolation:isolate}
+.kks-related-canvas a{cursor:pointer!important;pointer-events:auto!important}
+.kks-related-canvas img{max-width:none}
+/* The bottom product side purchase panel should finish before the full-width
+   3-item drawings; no sticky purchase box covering the extra section. */
+.product-page .detail-buy{position:static!important;top:auto!important;max-height:none!important;overflow:visible!important}
+/* Match the provided 10-column mypage layout inside the original SVG, without
+   resizing the sketchbook or the surrounding order / benefits panel. */
+@media(min-width:900px){
+ .kks-page-mypage #app>h1{position:relative;top:20px;font-size:34px!important}
+ .kks-page-mypage .mypage-grid{margin-top:0!important}
+ .mypage-grid .profile-card{transform:translateY(-8px);padding-left:clamp(35px,3.05vw,46px)!important;padding-right:clamp(32px,2.78vw,42px)!important}
+ .mypage-grid .profile-card button{padding:9px 3px!important;min-height:clamp(41px,3.2vw,45px)!important;display:flex!important;align-items:center!important}
+ .mypage-grid .profile-card button img{margin-left:10px!important}
+ .mypage-grid .profile-card .profile-menu-title{text-align:left!important;margin-left:4px!important}
+ .mypage-grid .profile-card .profile-menu-arrow{font-weight:300!important;padding-right:7px!important}
+ .mypage-grid .profile-card>p{margin-bottom:8px!important}
+}
+/* On desktop, the cyan tape belongs OUTSIDE the washer frame; its metal
+   and camera remain individually masked, so no camera layer leaks. */
+.booth-picture{overflow:visible!important}
+.booth-picture .tape{position:absolute!important;z-index:8!important;top:-5%!important;left:34.5%!important;width:31%!important;height:auto!important;object-fit:contain!important;pointer-events:none!important}
+.is-result .booth-return-home{display:flex!important;justify-content:center!important;align-items:center!important;text-decoration:none!important;color:#111!important;cursor:pointer!important;box-sizing:border-box!important}
+/* The mobile receiver already contains the authentic tape in the saved image;
+   show its full y=55..1160 image region rather than overlay a duplicate. */
+@media(max-width:767px){
+ .receipt .receipt-photo{aspect-ratio:1144/1105!important;overflow:hidden!important}
+ .receipt .receipt-photo img{top:-4.9774%!important}
+ .receipt .receipt-tape{display:none!important}
+}
