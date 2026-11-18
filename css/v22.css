@@ -4,7 +4,9 @@
      the product image, preserving its original right alignment and proportions. */
   .original-product-hero .kks-product-info-expanded {
     position:absolute;
-    left:0;top:0;
+    /* v23: typography and buttons share one left rail, while
+       the first copy line aligns with the photograph's top. */
+    left:-25px;top:23px;
     width:1920px;
     height:1030px;
     transform:scale(1.10);
@@ -21,13 +23,13 @@
 /* One user-supplied heart silhouette in the product wish and profile menu. */
 .shop .heart-button img {
   display:block;
-  width:27px;
-  height:24px;
+  width:23px;
+  height:21px;
   max-width:none;
   object-fit:contain;
 }
 .shop .heart-button.is-wished img {
-  filter:invert(32%) sepia(91%) saturate(3105%) hue-rotate(344deg) brightness(100%) contrast(98%);
+  filter:none!important;
 }
 .mypage-grid .profile-card #wishes img {
   width:25px!important;
@@ -76,3 +78,16 @@
 @media (prefers-reduced-motion:reduce) {
   .float-tools .photo-float img {animation:none}
 }
+
+/* v23: restrained button sizing; only product wish controls change. */
+@media (min-width:768px) {
+  .shop .original-purchase-slot .purchase-actions {
+    grid-template-columns:60px minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  .shop .detail-buy .purchase-actions {
+    grid-template-columns:40px minmax(0,1fr) minmax(0,1fr)!important;
+  }
+}
+.shop .original-purchase-slot .heart-button img {width:23px!important;height:21px!important}
+.shop .detail-buy .heart-button img {width:21px!important;height:19px!important}
+.shop .heart-button.is-wished img {filter:none!important}
