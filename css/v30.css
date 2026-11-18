@@ -1,0 +1,38 @@
+/* v30 — isolate the new 3 product-detail posters; preserve hero, checkout, sticky buy and related-products. */
+.product-page .detail-art.kks-detail-poster {
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  height:auto!important;
+  overflow:visible!important;
+  contain:layout;
+  background:#fff;
+}
+.product-page .detail-art.kks-detail-poster>img,
+.product-page .detail-art.kks-detail-poster>.kks-beforeafter-piece>img {
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+}
+.product-page .detail-art.kks-detail-poster>.kks-beforeafter-piece {position:relative;line-height:0;isolation:isolate;}
+.product-page .detail-art.kks-detail-poster>.kks-beforeafter-piece video {
+  display:block;
+  position:absolute;
+  top:38%; height:52%;
+  width:33%;
+  border:0; border-radius:0;
+  object-fit:cover; object-position:center;
+  pointer-events:none;
+  background:#f5f5f5;
+}
+.product-page .detail-art.kks-detail-poster .kks-ba-before {left:15%;}
+.product-page .detail-art.kks-detail-poster .kks-ba-after {left:51%;}
+@media (max-width:767px){
+  .product-page .detail-art.kks-detail-poster {width:100%!important;overflow:visible!important;}
+}
