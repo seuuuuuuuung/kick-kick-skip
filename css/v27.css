@@ -22,3 +22,46 @@
 .kks-unified-footer .footer-art>div img {
   image-rendering:auto;
 }
+
+/* v28: the supplied SVGs are the icon originals; avoid global SVG stroke overrides. */
+/* Footer: keep right-aligned brand logo but give the iron a bit more presence and space. */
+.kks-unified-footer .footer-art > div img {
+  width:clamp(57px,5.3vw,81px) !important;
+  max-width:none !important;
+  height:auto !important;
+  position:relative;
+  top:11px !important;
+  margin:0 0 16px auto !important;
+}
+/* The copyright is Special Gothic, not the page's default Asta Sans. */
+.kks-unified-footer .footer-info > b {
+  font-family:'Special Gothic',sans-serif !important;
+  font-weight:400 !important;
+  font-variation-settings:'wdth' 100 !important;
+  font-synthesis:none;
+}
+/* HOME uses the newly supplied left-pointing drawing, not a text arrow. */
+.single-photo-app .booth-home {
+  display:inline-flex !important;
+  align-items:center !important;
+  width:max-content;
+  gap:clamp(5px,.45vw,9px) !important;
+  font-size:clamp(19px,1.55vw,29px) !important;
+  line-height:1 !important;
+  white-space:nowrap;
+}
+.single-photo-app .booth-home .booth-home-arrow {
+  display:block;
+  width:clamp(32px,2.6vw,43px);
+  height:auto;
+  flex:none;
+}
+@media (max-width:767px) {
+  .kks-unified-footer .footer-art > div img {
+    width:clamp(46px,12vw,56px) !important;
+    top:8px !important;
+    margin-bottom:13px !important;
+  }
+  .single-photo-app .booth-home {font-size:clamp(18px,4.7vw,23px) !important;gap:5px !important}
+  .single-photo-app .booth-home .booth-home-arrow {width:clamp(28px,8vw,35px)}
+}
