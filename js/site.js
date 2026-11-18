@@ -17,9 +17,9 @@ document.addEventListener('keydown', function (e) {
 
 (function(){
   var cfg = {
-    'basket.html': {base:59000, type:'basket', options:[['1w','1단 화이트',0],['1b','1단 블루',0],['2w','2단 화이트',55000],['2b','2단 블루',55000]]},
-    'hammock.html': {base:19900, type:'simple', options:[['white','화이트',0],['blue','블루',0]]},
-    'clip.html': {base:9900, type:'simple', options:[['yellow','옐로우',0],['blue','블루',0]]}
+    'basket.html': {base:59000, type:'basket', options:[['1w','1단 화이트',0],['1b','1단 블루',0],['1y','1단 옐로우',0],['2w','2단 화이트',55000],['2b','2단 블루',55000],['2y','2단 옐로우',55000]]},
+    'hammock.html': {base:19900, type:'simple', options:[['white','화이트',0],['blue','블루',0],['yellow','옐로우',0]]},
+    'clip.html': {base:9900, type:'simple', options:[['yellow','옐로우',0],['blue','블루',0],['white','화이트',0]]}
   };
   var page=(location.pathname.split('/').pop()||'index.html').toLowerCase(), c=cfg[page];
 

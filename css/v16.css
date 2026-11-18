@@ -1,0 +1,132 @@
+/* v16 — only requested visual corrections. Shared SHOP footer and constrained details. */
+.kks-unified-footer{
+  width:var(--site-guide)!important;max-width:none!important;box-sizing:border-box;
+  margin:55px auto 24px!important;padding:0!important;color:#141414;
+}
+.kks-unified-footer .footer-art{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+  position:relative;border:0!important;padding-bottom:20px;
+}
+.kks-unified-footer .footer-art:after{
+  content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;
+  background:#111;clip-path:polygon(0 14%,16% 38%,33% 12%,50% 40%,68% 8%,84% 30%,100% 8%,100% 100%,0 100%);
+}
+.kks-unified-footer .footer-art>img{width:min(235px,35%);height:auto}
+.kks-unified-footer .footer-art>div{font:clamp(17px,2vw,30px) Salted, sans-serif;text-align:right}
+.kks-unified-footer .footer-art>div img{width:70px;max-width:30%;display:block;margin:0 0 8px auto}
+.kks-unified-footer .footer-info{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.45fr);
+ align-items:start;column-gap:20px;line-height:1.6;font-size:clamp(10px,.8vw,14px);
+ padding-top:13px;
+}
+.kks-unified-footer .footer-info>*{min-width:0;max-width:none}
+.kks-unified-footer .footer-info b{text-align:center}
+.kks-unified-footer .footer-info>span:last-child{text-align:right}
+.m-foot{display:none!important}
+@media(min-width:768px){
+ /* Remove only the legacy Figma footer strip from the artboards; leave all preceding illustrations alone. */
+ body>.stage:not(.detail-art):not(.m-window){height:calc((var(--h) - 480) * var(--z,1) * 1px)!important}
+ body.kks-page-index>.stage{height:calc((var(--h) - 550) * var(--z,1) * 1px)!important}
+ body.kks-page-product>.stage{height:calc((var(--h) - 260) * var(--z,1) * 1px)!important}
+ /* Detail images and purchase information share the inset of the upper product image. */
+ .product-page .detail-layout{width:93.4%!important;max-width:93.4%!important;margin-inline:auto!important}
+}
+@media(max-width:767px){
+ .kks-unified-footer{margin:42px auto 20px!important}
+ .kks-unified-footer .footer-art{padding-bottom:14px}
+ .kks-unified-footer .footer-art>img{width:min(110px,32%)}
+ .kks-unified-footer .footer-art>div{font-size:clamp(13px,3.8vw,18px)}
+ .kks-unified-footer .footer-art>div img{width:44px}
+ .kks-unified-footer .footer-info{grid-template-columns:1fr;gap:7px;font-size:10px}
+ .kks-unified-footer .footer-info b,.kks-unified-footer .footer-info>span:last-child{text-align:left}
+ .product-page .detail-layout{width:100%!important;max-width:100%!important;margin-inline:0!important}
+}
+/* Advertisement: shorter without stretching the supplied artwork. */
+.ad-banner{height:56px!important;max-height:56px!important}
+.ad-banner img{height:42px!important;max-height:42px!important;width:min(880px,calc(100% - 100px))!important}
+@media(max-width:767px){.ad-banner{height:44px!important;max-height:44px!important}.ad-banner img{height:30px!important;max-height:30px!important;width:calc(100% - 62px)!important}}
+/* Subpixel video seams: crop transparent/dark outer pixels, never draw a new stroke. */
+.philosophy-hero-video,.gfx-hero-video,.motion-video{border:0!important;outline:0!important;box-shadow:none!important;backface-visibility:hidden}
+.philosophy-hero-video,.gfx-hero-video{object-fit:cover;transform:scale(1.008);transform-origin:center}
+.motion-video{transform:scale(1.012);transform-origin:center}
+.gfx-hero-desktop{top:118px!important}
+@media(max-width:767px){.gfx-hero-mobile{padding-top:12px!important}}
+/* Unified circular selection treatment copied from the payment method controls. */
+.shop .payment-choice input[type="radio"],
+.shop input[type="checkbox"]{
+ appearance:none!important;-webkit-appearance:none!important;position:relative!important;
+ display:inline-block!important;flex:0 0 27px!important;width:27px!important;height:27px!important;
+ border:2px solid #a4a4a4!important;border-radius:50%!important;background:#fff!important;
+ box-shadow:none!important;cursor:pointer;vertical-align:middle;
+}
+.shop .payment-choice input[type="radio"]:checked,
+.shop input[type="checkbox"]:checked,
+.shop input[type="checkbox"]:indeterminate{
+ border-color:#68cddd!important;background:#68cddd!important
+}
+.shop .payment-choice input[type="radio"]:checked:after,
+.shop input[type="checkbox"]:checked:after{
+ content:''!important;position:absolute!important;display:block!important;
+ width:8px!important;height:8px!important;border:0!important;inset:50% auto auto 50%!important;
+ transform:translate(-50%,-50%)!important;border-radius:50%!important;
+ background:#fff!important;filter:none!important
+}
+.shop input[type="checkbox"]:indeterminate:after{
+ content:''!important;position:absolute!important;width:10px!important;height:3px!important;
+ left:50%!important;top:50%!important;inset:auto!important;transform:translate(-50%,-50%)!important;
+ background:white!important;border:0!important;display:block!important
+}
+.shop .group-check{margin:5px 4px 0 0!important}
+/* Only a small character enlargement; leave the original post-it proportions. */
+.thank-dialog img{height:127px!important;max-height:127px!important;max-width:180px!important}
+@media(max-width:767px){.thank-dialog img{height:100px!important;max-height:100px!important}}
+/* Photo booth result: contain the exported vertical JPEG so its lower logo cannot spill behind the button. */
+.result-picture{overflow:hidden!important;isolation:isolate}
+.result-picture img{display:block;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center top!important}
+.is-result .booth-caption{z-index:5;background:#fff}
+.is-result .booth-action{z-index:6}
+/* The QR receipt is laid out vertically within one phone viewport. */
+body.photo-receipt-page{height:100svh!important;min-height:0!important;overflow:hidden!important}
+.photo-receipt-page .single-photo-app{height:100svh!important;max-height:100svh!important;overflow:hidden!important}
+.receipt{
+ box-sizing:border-box;height:100svh!important;min-height:0!important;max-height:100svh!important;
+ width:min(430px,100%)!important;max-width:430px!important;overflow:hidden!important;
+ margin:auto!important;padding:clamp(48px,9svh,86px) 34px clamp(12px,3svh,26px)!important;
+ display:flex!important;flex-direction:column!important;align-items:stretch;gap:0;
+}
+.receipt h1{flex:0 0 auto;font:clamp(23px,3.7vh,34px)/1.05 Salted,sans-serif!important;
+ margin:0 0 clamp(13px,3svh,24px)!important;text-align:center}
+.receipt .peek-character{position:absolute!important;right:-4px!important;top:clamp(38px,7svh,68px)!important;width:71px!important;height:111px!important;transform:none!important;background:none!important;z-index:1}
+.receipt .receipt-photo{
+ flex:0 1 auto;min-height:0;width:min(100%,300px)!important;
+ aspect-ratio:1.12!important;max-height:31svh!important;margin:0 auto!important;
+ overflow:hidden;border:0
+}
+.receipt-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 20%!important}
+.receipt .receipt-help{
+ flex:0 0 auto;font:clamp(9px,1.25svh,12px)/1.45 'Asta Sans',sans-serif!important;
+ margin:clamp(9px,2svh,20px) auto 0!important;text-align:center!important;
+ padding:0 3px;max-width:340px;background:transparent!important;z-index:4!important
+}
+.receipt .cloths{
+ position:absolute!important;pointer-events:none;z-index:0!important;
+ left:4%!important;width:92%!important;top:auto!important;bottom:-3svh!important;height:min(33svh,280px)!important;
+ object-fit:contain;object-position:bottom;
+}
+.receipt .receipt-actions{
+ flex:0 0 auto;position:relative;z-index:3!important;
+ margin:clamp(18px,5svh,42px) auto 0!important;width:100%;max-width:310px
+}
+.receipt-actions button,.receipt-actions a{
+ box-sizing:border-box;display:block!important;width:100%;min-height:43px;
+ margin:0 0 8px!important;padding:11px 12px!important
+}
+.receipt-actions .download{background:#fff000!important}
+@media(max-height:700px){
+ .receipt{padding-top:40px!important;padding-bottom:8px!important}
+ .receipt h1{margin-bottom:9px!important}
+ .receipt .receipt-photo{max-height:30svh!important}
+ .receipt .receipt-help{margin-top:7px!important}
+ .receipt .receipt-actions{margin-top:13px!important}
+ .receipt-actions button{padding:7px!important;min-height:37px!important}
+}
