@@ -14,7 +14,23 @@
 .kks-related-canvas img{max-width:none}
 /* The bottom product side purchase panel should finish before the full-width
    3-item drawings; no sticky purchase box covering the extra section. */
-.product-page .detail-buy{position:static!important;top:auto!important;max-height:none!important;overflow:visible!important}
+/* Stay beside the long product details, then stop automatically at the end
+   of .detail-layout (before '다른 제품 더 보기'). Mobile stays in document flow. */
+@media(min-width:768px){
+  .product-page .detail-layout{align-items:start}
+  .product-page .detail-buy{
+    position:sticky!important;
+    top:24px!important;
+    max-height:calc(100dvh - 48px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain;
+    align-self:start!important;
+  }
+}
+@media(max-width:767px){
+  .product-page .detail-buy{position:static!important;top:auto!important;max-height:none!important;overflow:visible!important}
+}
 /* Match the provided 10-column mypage layout inside the original SVG, without
    resizing the sketchbook or the surrounding order / benefits panel. */
 @media(min-width:900px){
@@ -39,3 +55,7 @@
  .receipt .receipt-photo img{top:-4.9774%!important}
  .receipt .receipt-tape{display:none!important}
 }
+
+/* Use the original hand-drawn heart traced to vector for crisp rendering. */
+.mypage-grid .profile-card #wishes img{width:25px!important;height:25px!important;max-width:none!important;object-fit:contain!important}
+@media(max-width:480px){.mypage-grid .profile-card #wishes img{width:23px!important;height:23px!important}}
