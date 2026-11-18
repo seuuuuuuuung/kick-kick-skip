@@ -26,7 +26,7 @@ if(!['photo.html','photobooth.html'].includes(page)){
  // A single SHOP footer is used on every page; no separate Figma footer text.
  const footer=document.createElement('footer');
  footer.className='shop-footer kks-unified-footer';
- footer.innerHTML='<div class="footer-art"><img src="assets/m/footer-laundry-thin.png" alt=""><div><img src="assets/m/footer-iron-thin.png" alt="">MAKE ROOM FOR LIFE</div></div><div class="footer-info"><span><a href="mailto:letskkikki@gmail.com">letskkikki@gmail.com</a><br><a href="https://www.instagram.com/kick.kick.skip_living/" target="_blank" rel="noopener">insta.@kick.kick.skip_living</a></span><b>@2026<br>Ⓒ KICK KICK SKIP, All Rights Reserved.</b><span>This is a virtual brand landing page created by Hankyung University<br>Brand Management class</span></div>';
+ footer.innerHTML='<div class="footer-art"><img src="assets/m/footer-laundry-sketch.svg" alt=""><div><img src="assets/m/footer-iron-sketch.svg" alt="">MAKE ROOM FOR LIFE</div></div><div class="footer-info"><span><a href="mailto:letskkikki@gmail.com">letskkikki@gmail.com</a><br><a href="https://www.instagram.com/kick.kick.skip_living/" target="_blank" rel="noopener">insta.@kick.kick.skip_living</a></span><b>@2026<br>Ⓒ KICK KICK SKIP, All Rights Reserved.</b><span>This is a virtual brand landing page created by Hankyung University<br>Brand Management class</span></div>';
  document.body.append(footer);
  updateBadge();
 }

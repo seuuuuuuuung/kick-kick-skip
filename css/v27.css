@@ -1,0 +1,24 @@
+/* v27: shared hand-drawn vectors and tighter header navigation.
+   ABOUT US remains anchored to the original footer left rail. */
+@media (min-width:768px) {
+  .shop-header nav {
+    flex:0 0 auto!important;
+    width:max-content!important;
+    min-width:0!important;
+    justify-content:flex-start!important;
+    gap:clamp(29px,3vw,55px)!important;
+  }
+  .shop-header .header-icons {margin-left:auto!important}
+}
+/* Use source SVG artwork instead of raster backgrounds without altering layout. */
+.shop .commerce-grid .summary {
+  background-image:url('../assets/v08/sketchbook.svg')!important;
+}
+.thank-dialog {
+  background-image:url('../assets/shop/구매 감사 배경 포스트잇.svg')!important;
+}
+/* Preserve original sizes/positions of both footer illustrations. */
+.kks-unified-footer .footer-art>img,
+.kks-unified-footer .footer-art>div img {
+  image-rendering:auto;
+}
