@@ -1,0 +1,43 @@
+/* v19: requested changes only. Existing layout / brand assets stay intact. */
+/* The original 1920px hero was cropped just beyond its right edge (1678 vs 1670).
+   Move only the interactive right purchase controls into the common hero rail. */
+@media(min-width:768px){
+ .original-product-hero .original-purchase-slot{
+   left:1129px!important; width:510px!important; max-width:510px!important;
+   box-sizing:border-box!important;
+ }
+ .original-product-hero .original-purchase-slot .purchase-widget,
+ .original-product-hero .original-purchase-slot .purchase-actions,
+ .original-product-hero .original-purchase-slot select{box-sizing:border-box!important;max-width:100%!important;min-width:0!important}
+}
+/* The little iron sits above the beginning of the lettering, like the supplied footer art. */
+.kks-unified-footer .footer-art>div{display:flex!important;flex-direction:column!important;align-items:flex-start!important;text-align:left!important}
+.kks-unified-footer .footer-art>div img{margin:0 0 8px clamp(12px,1.5vw,23px)!important;align-self:flex-start!important}
+/* Preserve the thank-you post-it size and mascot. Raise only typography, maintaining designed line-height. */
+.thank-dialog h2,.thank-dialog strong,.thank-dialog p{position:relative;top:-23px}
+.thank-dialog h2{line-height:1.1!important;margin-bottom:12px!important}
+.thank-dialog strong{line-height:1.35!important}
+.thank-dialog p{line-height:1.5!important;margin-top:23px!important}
+/* The original sketchbook and profile size stay unchanged; tune only content spacing to the mockup. */
+@media(min-width:900px){
+ .mypage-grid .profile-card{padding-top:clamp(56px,5.4vw,82px)!important}
+ .mypage-grid .profile-card button{min-height:clamp(45px,3.9vw,53px)!important;padding-inline:clamp(8px,1.2vw,17px)!important}
+ .mypage-grid>section>.benefits{margin-bottom:clamp(39px,3.4vw,47px)!important}
+ .mypage-grid #my-content>.order-card{margin-top:10px!important}
+}
+@media(max-width:899px){
+ .mypage-grid .profile-card button{padding-inline:clamp(11px,4vw,20px)!important}
+}
+/* Restore the top cyan tape in the phone receipt without cropping the JPEG or inventing another frame. */
+@media(max-width:767px){
+ .receipt .receipt-tape{
+   position:absolute!important;z-index:8!important;
+   left:50%!important;top:calc(22.8% - min(84vw,340px,38.5svh) * 0.025)!important;
+   transform:translate(-50%,-50%) rotate(-3deg)!important;
+   width:clamp(60px,22vw,99px)!important;height:auto!important;
+   object-fit:contain!important;pointer-events:none!important;
+ }
+}
+@media(max-width:767px) and (max-height:700px){
+ .receipt .receipt-tape{top:calc(21% - min(84vw,340px,38.5svh) * 0.025)!important}
+}
